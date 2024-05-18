@@ -1,10 +1,15 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    document.title = "Register Page";
+  }, []);
   //handle event onSubmit
   function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+    setIsLoading(true);
     event.preventDefault();
     const nama = event.currentTarget.nama.value;
     const email = event.currentTarget.email.value;
@@ -31,9 +36,21 @@ export default function Page() {
         } else {
           alert("Ops.." + response.data.message);
         }
+        setIsLoading(false);
       })
       .catch((error) => {
-        alert("Ops... " + error);
+        if (error.response && error.response.status === 422) {
+          const errors = error.response.data.errors;
+          let errorMessage = "Ops... Terjadi kesalahan:\n";
+          for (const key in errors) {
+            errorMessage += `${key}: ${errors[key].join(", ")}\n`;
+          }
+          alert(errorMessage);
+        } else {
+          alert("Ops... Terjadi kesalahan: " + error.message);
+        }
+
+        setIsLoading(false);
       });
   }
 
@@ -67,11 +84,15 @@ export default function Page() {
               placeholder="Password"
               className="form-control mt-2"
             />
-            <input
-              type="submit"
-              value="Login"
-              className="btn btn-primary mt-2"
-            />
+            <button className="btn btn-primary mt-2" type="submit">
+              {isLoading ? (
+                <div className="spinner-border text-light" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              ) : (
+                "Register"
+              )}
+            </button>
           </form>
         </div>
       </div>

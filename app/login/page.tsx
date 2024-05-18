@@ -1,21 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    document.title = "Login Page";
+  }, []);
+
   //handle event onSubmit
   function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
-    const username = event.currentTarget.username.value;
+    const email = event.currentTarget.email.value;
     const password = event.currentTarget.password.value;
     //tampilkan loading di button menggunakan spinner
     axios
       .post(
         "https://belajar-api.unama.ac.id/api/login",
         {
-          email: username,
+          email: email,
           password: password,
         },
         {
@@ -26,11 +30,23 @@ export default function Page() {
         }
       )
       .then((response) => {
-        alert("Hore.. Login berhasil. " + response.data);
+        alert(
+          "Hore.. Login berhasil. Selamat Datang, Nama Kamu Adalah " +
+            response.data.data.name
+        );
         setIsLoading(false);
       })
       .catch((error) => {
-        alert("Ops... " + error);
+        if (error.response && error.response.status === 422) {
+          const errors = error.response.data.errors;
+          let errorMessage = "Ops... Terjadi kesalahan:\n";
+          for (const key in errors) {
+            errorMessage += `${key}: ${errors[key].join(", ")}\n`;
+          }
+          alert(errorMessage);
+        } else {
+          alert("Ops... Terjadi kesalahan: " + error.message);
+        }
         setIsLoading(false);
       });
   }
@@ -44,9 +60,9 @@ export default function Page() {
           <form onSubmit={handleLogin} method="post">
             <input
               type="text"
-              name="username"
-              id="username"
-              placeholder="Username"
+              name="email"
+              id="email"
+              placeholder="email"
               className="form-control mt-2"
               autoFocus
             />

@@ -3,8 +3,13 @@ import Link from "next/link";
 const Page = () => {
   return (
     <div className="card">
-      <div className="card-header">Header</div>
-      <div className="card-body">Welcome to the page!</div>
+      <div className="card-header">React API UNAMA</div>
+      <div className="card-body">
+        Data di Aplikasi ini dari{" "}
+        <a href="https://belajar-api.unama.ac.id" target="blank">
+          https://belajar-api.unama.ac.id
+        </a>{" "}
+      </div>
     </div>
   );
 };

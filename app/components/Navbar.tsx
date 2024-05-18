@@ -1,6 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import "font-awesome/css/font-awesome.min.css";
 
 const Navbar = () => {
+  const path = usePathname();
+  console.log(path);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -20,19 +26,24 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
+            <li className={path === "/" ? "nav-item active" : "nav-item"}>
               <Link href="/" className="nav-link">
-                Home
+                <i className="fa fa-home"></i> Home
               </Link>
             </li>
-            <li className="nav-item">
+            <li className={path === "/login" ? "nav-item active" : "nav-item"}>
               <Link href="/login" className="nav-link">
-                Login
+                <i className="fa fa-sign-in"></i> Login
               </Link>
             </li>
-            <li className="nav-item">
-              <Link href="/register" className="nav-link">
-                Register
+            <li
+              className={path === "/register" ? "nav-item active" : "nav-item"}
+            >
+              <Link
+                href="/register"
+                className="nav-link {router.pathname === '/' ? 'nav-item active' : 'nav-item'}"
+              >
+                <i className="fa fa-user-plus" aria-hidden="true"></i> Register
               </Link>
             </li>
           </ul>
