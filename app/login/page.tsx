@@ -13,7 +13,7 @@ export default function Page() {
     //tampilkan loading di button menggunakan spinner
     axios
       .post(
-        "http://belajar-api.unama.ac.id/api/login",
+        "https://belajar-api.unama.ac.id/api/login",
         {
           email: username,
           password: password,

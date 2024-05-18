@@ -12,7 +12,7 @@ export default function Page() {
     //post data ke server axios dengan method post, dengan header accept json, body email dan password
     axios
       .post(
-        "http://belajar-api.unama.ac.id/api/register",
+        "https://belajar-api.unama.ac.id/api/register",
         {
           name: nama,
           email: email,
