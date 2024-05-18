@@ -41,9 +41,20 @@ const Navbar = () => {
             >
               <Link
                 href="/register"
-                className="nav-link {router.pathname === '/' ? 'nav-item active' : 'nav-item'}"
+                className="nav-link {router.pathname === '/register' ? 'nav-item active' : 'nav-item'}"
               >
                 <i className="fa fa-user-plus" aria-hidden="true"></i> Register
+              </Link>
+            </li>
+            <li
+              className={path === "/mahasiswa" ? "nav-item active" : "nav-item"}
+            >
+              <Link
+                href="/mahasiswa"
+                className="nav-link {router.pathname === '/mahasiswa' ? 'nav-item active' : 'nav-item'}"
+              >
+                <i className="fa fa-users" aria-hidden="true"></i> Data
+                Mahasiswa
               </Link>
             </li>
           </ul>

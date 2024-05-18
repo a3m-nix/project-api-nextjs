@@ -8,7 +8,7 @@ export default function Page() {
     document.title = "Register Page";
   }, []);
   //handle event onSubmit
-  function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+  function handleRegister(event: React.FormEvent<HTMLFormElement>) {
     setIsLoading(true);
     event.preventDefault();
     const nama = event.currentTarget.nama.value;
@@ -60,7 +60,7 @@ export default function Page() {
       <div className="card-body">
         <h1>Pendaftaran</h1>
         <div className="col-md-5">
-          <form onSubmit={handleLogin} method="post">
+          <form onSubmit={handleRegister} method="post">
             <input
               type="text"
               name="nama"
