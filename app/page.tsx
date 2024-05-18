@@ -10,9 +10,7 @@ const Page = () => {
           https://belajar-api.unama.ac.id
         </a>{" "}
         <br />
-        Menu yang tersedia:
-        <Link href="/login">Login</Link>
-        atau
+        Menu yang tersedia: &nbsp;<Link href="/login">Login</Link> atau{" "}
         <Link href="/register">Register</Link>
       </div>
     </div>
