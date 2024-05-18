@@ -36,12 +36,6 @@ const Page: React.FC = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (data.length > 0) {
-      console.log("Data has been updated", data);
-    }
-  }, [data]);
-
   return (
     <div className="card">
       <div className="card-header">Data Mahasiswa</div>
