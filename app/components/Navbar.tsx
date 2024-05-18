@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link href="/" className="navbar-brand">
-          React
+          React & Next.js
         </Link>
         <button
           className="navbar-toggler"
