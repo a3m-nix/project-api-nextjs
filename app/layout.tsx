@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-//import "bootstrap/dist/js/bootstrap.min.js";
 import Navbar from "./components/Navbar";
-import "./globals.css";
 import { useEffect } from "react";
+import "./globals.css";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "My React App",
@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" />
       <body>
         <Navbar />
         <main className="container mt-2">{children}</main>
