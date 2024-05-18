@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //import "bootstrap/dist/js/bootstrap.min.js";
 import Navbar from "./components/Navbar";
 import "./globals.css";
+import { useEffect } from "react";
 
 export const metadata: Metadata = {
   title: "My React App",
