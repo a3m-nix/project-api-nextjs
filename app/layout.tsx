@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+//import "bootstrap/dist/js/bootstrap.min.js";
 import Navbar from "./components/Navbar";
 import "./globals.css";
 
