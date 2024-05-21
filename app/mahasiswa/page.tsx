@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Link from "next/link";
 
 interface Mahasiswa {
+  id: string;
   nim: string;
   nama: string;
   program_studi: string;
@@ -50,6 +52,7 @@ const Page: React.FC = () => {
                 <th>NIM</th>
                 <th>Nama</th>
                 <th>Program Studi</th>
+                <th>AKSI</th>
               </tr>
             </thead>
             <tbody>
@@ -59,6 +62,14 @@ const Page: React.FC = () => {
                   <td>{item.nim}</td>
                   <td>{item.nama}</td>
                   <td>{item.program_studi}</td>
+                  <td>
+                    <Link
+                      href={"/mahasiswa/edit/" + item.id}
+                      className="btn btn-warning btn-sm"
+                    >
+                      Edit
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
