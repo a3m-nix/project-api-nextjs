@@ -30,10 +30,15 @@ export default function Page() {
         }
       )
       .then((response) => {
-        alert(
-          "Hore.. Login berhasil. Selamat Datang, Nama Kamu Adalah " +
-            response.data.data.name
-        );
+        if (response.status !== 200) {
+          alert("Ops.. Login Gagal" + response.data.data.name);
+        } else {
+          alert(
+            "Hore.. Login berhasil. Selamat Datang, Nama Kamu Adalah " +
+              response.data.data.name
+          );
+        }
+
         setIsLoading(false);
       })
       .catch((error) => {
